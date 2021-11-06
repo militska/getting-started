@@ -17,7 +17,7 @@ fn main() {
             Err(_) => continue,
         };
 
-        println!("Введите темпиратуру");
+        println!("Введите температуру");
 
         let mut temp = String::new();
 
@@ -30,10 +30,8 @@ fn main() {
             Err(_) => continue,
         };
 
-        let mut formula = 0;
         if mode == 1 {
-            let ff = (temp - 32) * 5 / 9;
-            println!("{:.5}", ff);
+            println!("{:.5}", (temp - 32) * 5 / 9);
         } else {
             println!("{:.2}", temp * 9 / 5 + 32);
         }
