@@ -2,10 +2,11 @@ use std::io;
 
 fn main() {
     loop {
+        const F_TO_C: i8 = 1;
+        const C_TO_F: i8 = 2;
+
         println!("______");
-        println!("Change mode: ");
-        println!("1. fn->c");
-        println!("2. c->fn");
+
 
         let (mode, res_mode) = enter_mode();
         if !res_mode {
@@ -17,8 +18,14 @@ fn main() {
             continue
         }
         match mode {
-            1 => { println!("{:.5}", (temp - 32) * 5 / 9) },
-            2 => { println!("{:.2}", temp * 9 / 5 + 32) },
+            F_TO_C => {
+                println!("Результат: {:.5}", (temp - 32) * 5 / 9);
+                break
+            },
+            C_TO_F => {
+                println!("Результат: {:.2}", temp * 9 / 5 + 32);
+                break
+            },
             _ => continue,
         }
     }
@@ -26,6 +33,10 @@ fn main() {
 
 
 fn enter_mode() -> (i8, bool) {
+    println!("Change mode: ");
+    println!("1. fn->c");
+    println!("2. c->fn");
+
     let mut mode = String::new();
     io::stdin()
         .read_line(&mut mode)
